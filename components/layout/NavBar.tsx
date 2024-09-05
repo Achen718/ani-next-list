@@ -2,6 +2,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { MobileNav } from './MobileNav';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,8 +16,8 @@ import { docsConfig } from '@/config/nav';
 // Todo: Add logo/auth
 export function NavBar() {
   return (
-    <header className='z-50 sticky top-0 hidden md:flex h-16 justify-center items-center gap-4 border-b bg-background px-4 md:px-6'>
-      <NavigationMenu>
+    <header className='z-50 sticky top-0 flex h-16 justify-start md:justify-center items-center gap-4 border-b bg-background px-4 md:px-6'>
+      <NavigationMenu className='hidden md:flex'>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Anime</NavigationMenuTrigger>
@@ -76,6 +77,7 @@ export function NavBar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <MobileNav />
     </header>
   );
 }

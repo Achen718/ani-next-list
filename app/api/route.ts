@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get('field');
   const res = await fetch(
-    `${apiUrl}/anime/10357?fields=rank,mean,alternative_titles`,
+    `${apiUrl}/anime/48316?fields=rank,mean,alternative_titles`,
     {
       headers: {
         'Content-Type': 'application/json',

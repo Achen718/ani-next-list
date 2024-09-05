@@ -1,5 +1,5 @@
-const AnimeOptionalSlug = () => {
-  return <div>Anime pages with optional slug</div>;
+const AnimePages = () => {
+  return <div>Anime Search, optional slugs</div>;
 };
 
-export default AnimeOptionalSlug;
+export default AnimePages;

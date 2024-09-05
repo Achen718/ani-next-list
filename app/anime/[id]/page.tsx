@@ -1,4 +1,5 @@
 const AnimeDetailsPage = async () => {
+  // delete or more code to optional slugs
   const getAnime = async () => {
     const res = await fetch(`http://localhost:3000/api`, {
       // limit to 10 seconds

@@ -8,7 +8,7 @@ export async function GET(
   // console.log(searchParams);
   const query = searchParams.get('fields');
   const slug = params.slug;
-  console.log(slug);
+  // console.log(slug);
   const res = await fetch(
     `${process.env.MAL_API_URL}/anime/${slug}?ranking_type=all&limit=4`,
     {

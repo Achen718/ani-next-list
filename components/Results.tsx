@@ -1,51 +1,58 @@
+'use client';
+import React, { useEffect, useState, useMemo } from 'react';
 import ResultsCard from './ResultsCard';
-import type CardProps from './ResultsCard';
+import { useAnime } from '@/context/AnimeContext';
 
-interface ResultsProps {
-  node: {
-    image: string;
-    title: string;
-    id: number;
-    main_picture: {
-      medium: string;
-      large: string;
-    };
-  };
-  ranking: {
-    rank: number;
+interface Anime {
+  id: number;
+  title: string;
+  main_picture: {
+    medium: string;
   };
 }
 
-const Results = async () => {
-  const getAnime = async () => {
-    // Todo: Add seasons conditional -- Move to section
-    const res = await fetch(`http://localhost:3000/api/ranking`, {
-      // limit to 10 seconds
-      next: { revalidate: 10 },
-    });
-    return res.json();
-  };
-  // seasonal/ranking destructure data
-  const { data } = await getAnime();
-  // const img = data.main_picture.medium;
-  // const title = data.title;
-  // const animeId = data.id;
+interface ResultsProps {
+  endpoint: string;
+  params: Record<string, string>;
+  sectionTitle: string;
+}
 
-  // /ranking?ranking_type = all, airing, upcoming, tv, ova, movie, special, bypopularity, favorite
+const Results: React.FC<ResultsProps> = ({
+  endpoint,
+  params,
+  sectionTitle,
+}) => {
+  const { fetchData, loading, error } = useAnime();
+  const [data, setData] = useState<Anime[]>([]);
+
+  const stableParams = useMemo(() => params, [params]);
+
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      const result = await fetchData(endpoint, stableParams);
+      setData(result.map((item) => item.node)); // Extract the node property
+    };
+
+    fetchDataAsync();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
-    <>
-      <h4 className='text-lg'>Popular Airing</h4>
+    <div className='mb-4'>
+      <h4 className='text-lg'>{sectionTitle}</h4>
       <div className='grid md:grid-col-6 grid-flow-col gap-7 justify-between'>
-        {data?.map(({ node }: ResultsProps) => (
+        {data.map((anime) => (
           <ResultsCard
-            key={node.id}
-            image={node.main_picture.medium}
-            title={node.title}
-            id={node.id}
+            key={anime.id}
+            image={anime.main_picture.medium}
+            title={anime.title}
+            id={anime.id}
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

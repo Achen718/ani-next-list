@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,8 +9,7 @@ export interface CardProps {
   rank?: number;
 }
 
-const ResultsCard = async ({ image, title, id, rank }: CardProps) => {
-  const styleProps = {};
+const ResultsCard: React.FC<CardProps> = ({ image, title, id, rank }) => {
   return (
     <div className='anime-card w-48'>
       <Link href={`/anime/${id}`}>
@@ -24,7 +24,7 @@ const ResultsCard = async ({ image, title, id, rank }: CardProps) => {
             height: '240px',
             maxHeight: '100%',
           }}
-          alt='Shadow'
+          alt={title}
         />
         <p>{title}</p>
       </Link>

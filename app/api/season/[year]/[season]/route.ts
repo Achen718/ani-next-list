@@ -2,19 +2,16 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: { year: string; season: string } }
 ) {
   const searchParams = request.nextUrl.searchParams;
-  const fields = searchParams.get('fields');
-  const rankingType = searchParams.get('ranking_type') || 'airing';
   const limit = searchParams.get('limit') || '6';
-  const slug = params.slug;
+  const year = params.year;
+  const season = params.season;
 
-  const url = new URL(`${process.env.MAL_API_URL}/anime/${slug}`);
-  if (fields) {
-    url.searchParams.append('fields', fields);
-  }
-  url.searchParams.append('ranking_type', rankingType);
+  const url = new URL(
+    `${process.env.MAL_API_URL}/anime/season/${year}/${season}`
+  );
   url.searchParams.append('limit', limit);
 
   // console.log(`Fetching URL: ${url.toString()}`);

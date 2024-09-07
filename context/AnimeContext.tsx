@@ -1,12 +1,12 @@
 'use client';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { Anime } from '@/types';
+import { Anime, AnimeNode } from '@/types';
 
 interface AnimeContextProps {
   fetchData: (
     endpoint: string,
     params: Record<string, string>
-  ) => Promise<Anime[]>;
+  ) => Promise<AnimeNode[] | Anime>;
   loading: boolean;
   error: string | null;
 }
@@ -32,7 +32,7 @@ export const AnimeProvider: React.FC<AnimeProviderProps> = ({ children }) => {
   const fetchData = async (
     endpoint: string,
     params: Record<string, string>
-  ): Promise<Anime[]> => {
+  ): Promise<AnimeNode[] | Anime> => {
     setLoading(true);
     setError(null);
     try {
@@ -52,6 +52,7 @@ export const AnimeProvider: React.FC<AnimeProviderProps> = ({ children }) => {
 
       const data = await response.json();
       // console.log('Fetched data:', JSON.stringify(data, null, 2));
+      // season/rank returns double data, details returns single data
       return data.data || data;
     } catch (err: any) {
       setError(err.message);

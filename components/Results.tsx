@@ -3,7 +3,15 @@ import React, { useEffect, useState, useMemo } from 'react';
 import ResultsCard from './ResultsCard';
 import { useAnime } from '@/context/AnimeContext';
 import Link from 'next/link';
-import { Anime } from '@/types';
+import { AnimeNode } from '@/types';
+
+interface AnimeResults {
+  id: number;
+  title: string;
+  main_picture: {
+    medium: string;
+  };
+}
 
 interface ResultsProps {
   endpoint: string;
@@ -17,15 +25,15 @@ const Results: React.FC<ResultsProps> = ({
   sectionTitle,
 }) => {
   const { fetchData, loading, error } = useAnime();
-  const [data, setData] = useState<Anime[]>([]);
+  const [data, setData] = useState<AnimeResults[]>([]);
 
-  const stableParams = useMemo(() => params, [params]);
+  // const stableParams = useMemo(() => params, [params]);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const result = await fetchData(endpoint, stableParams);
+      const result = await fetchData(endpoint, params);
       // console.log(result);
-      setData(result.map((item) => item.node)); // Extract the node property
+      setData((result as AnimeNode[]).map((item) => item.node)); // Extract the node property
     };
 
     fetchDataAsync();

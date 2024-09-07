@@ -10,22 +10,30 @@ interface DetailsProps {
 
 const Details: React.FC<DetailsProps> = ({ endpoint, params }) => {
   const { fetchData, loading, error } = useAnime();
-  const [data, setData] = useState<Anime[]>([]);
+  const [data, setData] = useState<Anime>({} as Anime);
 
-  const stableParams = useMemo(() => params, [params]);
+  // const stableParams = useMemo(() => params, [params]);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const result = await fetchData(endpoint, stableParams);
-      setData(result);
+      const result = await fetchData(endpoint, params);
+      setData(result as Anime);
+      // console.log(result);
     };
 
     fetchDataAsync();
   }, []);
+
   console.log(data);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <div>
       <div>{data.title}</div>
+      <div>{data.rank}</div>
+      <div>{data.mean}</div>
+      <div>{data.media_type}</div>
     </div>
   );
 };

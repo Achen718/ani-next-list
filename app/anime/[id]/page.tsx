@@ -1,21 +1,16 @@
-const AnimeDetailsPage = async () => {
-  // delete or more code to optional slugs
-  // const getAnime = async () => {
-  //   const res = await fetch(`http://localhost:3000/api`, {
-  //     // limit to 10 seconds
-  //     next: { revalidate: 10 },
-  //   });
-  //   return res.json();
-  // };
+import { AnimeProvider } from '@/context/AnimeContext';
+import Details from '@/components/Details';
 
-  // const data = await getAnime();
+const AnimeDetailsPage = async () => {
+  const detailsParams =
+    'rank,mean,start_date,end_date,synopsis,mean,popularity,num_list_users,num_scoring_users,created_at,updated_at,media_type,status,genres,my_list_status,num_episodes,start_season';
 
   return (
-    <div>
-      <div>Title: </div>
-      <div>Rank: </div>
-      <div>Score: </div>
-    </div>
+    <AnimeProvider>
+      <section className='container mx-auto px-6'>
+        <Details endpoint={'48316'} params={{ fields: detailsParams }} />
+      </section>
+    </AnimeProvider>
   );
 };
 

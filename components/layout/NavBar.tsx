@@ -71,7 +71,7 @@ export function NavBar() {
           <NavigationMenuItem>
             <Link href='/docs' legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Documentation
+                Socials
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

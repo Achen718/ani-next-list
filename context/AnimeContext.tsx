@@ -1,15 +1,6 @@
 'use client';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-interface Anime {
-  node: {
-    id: number;
-    title: string;
-    main_picture: {
-      medium: string;
-    };
-  };
-}
+import { Anime } from '@/types';
 
 interface AnimeContextProps {
   fetchData: (
@@ -45,9 +36,6 @@ export const AnimeProvider: React.FC<AnimeProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      // https://api.myanimelist.net/v2/anime/ ${endpoint}?ranking_type=all&limit=4
-      // https://api.myanimelist.net/v2/anime /ranking?ranking_type=all&limit=4
-      // https://api.myanimelist.net/v2/anime /season/2017/summer?limit=4
       const url = new URL(`http://localhost:3000/api/${endpoint}`);
       const searchParams = new URLSearchParams(params);
       url.search = searchParams.toString();
@@ -63,7 +51,8 @@ export const AnimeProvider: React.FC<AnimeProviderProps> = ({ children }) => {
       }
 
       const data = await response.json();
-      return data.data;
+      // console.log('Fetched data:', JSON.stringify(data, null, 2));
+      return data.data || data;
     } catch (err: any) {
       setError(err.message);
       return [];

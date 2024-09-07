@@ -2,14 +2,8 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import ResultsCard from './ResultsCard';
 import { useAnime } from '@/context/AnimeContext';
-
-interface Anime {
-  id: number;
-  title: string;
-  main_picture: {
-    medium: string;
-  };
-}
+import Link from 'next/link';
+import { Anime } from '@/types';
 
 interface ResultsProps {
   endpoint: string;
@@ -30,6 +24,7 @@ const Results: React.FC<ResultsProps> = ({
   useEffect(() => {
     const fetchDataAsync = async () => {
       const result = await fetchData(endpoint, stableParams);
+      // console.log(result);
       setData(result.map((item) => item.node)); // Extract the node property
     };
 
@@ -41,8 +36,11 @@ const Results: React.FC<ResultsProps> = ({
 
   return (
     <div className='mb-4'>
-      <h4 className='text-lg'>{sectionTitle}</h4>
-      <div className='grid md:grid-col-6 grid-flow-col gap-7 justify-between'>
+      <div className='flex justify-between'>
+        <h4 className='text-lg'>{sectionTitle}</h4>
+        <Link href='/'>View All</Link>
+      </div>
+      <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 auto-rows-auto gap-7 justify-between'>
         {data.map((anime) => (
           <ResultsCard
             key={anime.id}

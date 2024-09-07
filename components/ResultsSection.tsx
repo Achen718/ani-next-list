@@ -3,6 +3,7 @@ import Results from '@/components/Results';
 const ResultsSection = () => {
   // limit to 6 in a row on homepage
   const limit = '6';
+
   // endpoint = /ranking or /season/year/season
   // params = ?ranking_type=upcoming&limit=6 }
   return (
@@ -14,7 +15,7 @@ const ResultsSection = () => {
       />
 
       <Results
-        sectionTitle='Airing Anime'
+        sectionTitle='Top Airing'
         endpoint='ranking'
         params={{ ranking_type: 'airing', limit: limit }}
       />
@@ -26,7 +27,7 @@ const ResultsSection = () => {
       />
 
       <Results
-        sectionTitle='Summer 2024 Anime'
+        sectionTitle='Summer 2024'
         endpoint='season/2024/summer'
         params={{ limit: limit }}
       />

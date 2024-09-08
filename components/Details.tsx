@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { Anime } from '@/types';
 import { useAnime } from '@/context/AnimeContext';
 
@@ -12,15 +12,14 @@ const Details: React.FC<DetailsProps> = ({ endpoint, params }) => {
   const { fetchData, loading, error } = useAnime();
   const [data, setData] = useState<Anime>({} as Anime);
 
-  // const stableParams = useMemo(() => params, [params]);
+  const stableParams = useMemo(() => params, [params]);
+
+  const fetchDataAsync = useCallback(async () => {
+    const result = await fetchData(endpoint, stableParams);
+    setData(result as Anime);
+  }, [endpoint, stableParams]);
 
   useEffect(() => {
-    const fetchDataAsync = async () => {
-      const result = await fetchData(endpoint, params);
-      setData(result as Anime);
-      // console.log(result);
-    };
-
     fetchDataAsync();
   }, []);
 

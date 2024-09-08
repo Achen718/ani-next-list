@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import ResultsCard from './ResultsCard';
 import { useAnime } from '@/context/AnimeContext';
 import Link from 'next/link';
@@ -27,15 +27,14 @@ const Results: React.FC<ResultsProps> = ({
   const { fetchData, loading, error } = useAnime();
   const [data, setData] = useState<AnimeResults[]>([]);
 
-  // const stableParams = useMemo(() => params, [params]);
+  const stableParams = useMemo(() => params, [params]);
+
+  const fetchDataAsync = useCallback(async () => {
+    const result = await fetchData(endpoint, stableParams);
+    setData((result as AnimeNode[]).map((item) => item.node)); // Extract the node property
+  }, [fetchData, endpoint, stableParams]);
 
   useEffect(() => {
-    const fetchDataAsync = async () => {
-      const result = await fetchData(endpoint, params);
-      // console.log(result);
-      setData((result as AnimeNode[]).map((item) => item.node)); // Extract the node property
-    };
-
     fetchDataAsync();
   }, []);
 

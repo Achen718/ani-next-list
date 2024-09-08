@@ -2,6 +2,8 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { Anime } from '@/types';
 import { useAnime } from '@/context/AnimeContext';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import Image from 'next/image';
 
 interface DetailsProps {
   endpoint: string;
@@ -29,10 +31,31 @@ const Details: React.FC<DetailsProps> = ({ endpoint, params }) => {
 
   return (
     <div>
-      <div>{data.title}</div>
-      <div>{data.rank}</div>
-      <div>{data.mean}</div>
-      <div>{data.media_type}</div>
+      <div className='image-section relative'></div>
+      <Card>
+        <CardHeader>
+          <CardTitle>{data.title}</CardTitle>
+          {data.main_picture ? (
+            <Image
+              src={data.main_picture.medium}
+              alt={data.title}
+              width={200}
+              height={200}
+            />
+          ) : (
+            <img src='default-image.jpg' alt='Default Image' />
+          )}
+        </CardHeader>
+        <CardContent>
+          <div>Rank: {data.rank}</div>
+          <div>
+            Score: {data.mean} (scored by {data.num_scoring_users} users)
+          </div>
+          <div>Type: {data.media_type}</div>
+          <div>Status: {data.status}</div>
+          <div>Popularity: #{data.popularity}</div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

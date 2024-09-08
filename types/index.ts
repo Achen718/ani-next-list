@@ -28,6 +28,13 @@ export interface Anime {
   genres: { id: number; name: string }[];
   num_episodes: number;
   status: string;
+  num_scoring_users: number;
+  pictures: [
+    {
+      large: string;
+      medium: string;
+    }
+  ];
   start_season: {
     year: number;
     season: string;

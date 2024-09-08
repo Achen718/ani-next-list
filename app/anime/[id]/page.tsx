@@ -3,7 +3,7 @@ import Details from '@/components/Details';
 
 const AnimeDetailsPage = ({ params }: { params: { id: string } }) => {
   const detailsParams =
-    'rank,mean,start_date,end_date,synopsis,mean,popularity,num_list_users,num_scoring_users,created_at,updated_at,media_type,status,genres,my_list_status,num_episodes,start_season';
+    'rank,mean,start_date,end_date,synopsis,mean,popularity,num_list_users,num_scoring_users,created_at,updated_at,media_type,status,genres,my_list_status,num_episodes,pictures,start_season';
 
   return (
     <AnimeProvider>

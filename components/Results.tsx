@@ -31,6 +31,7 @@ const Results: React.FC<ResultsProps> = ({
 
   const fetchDataAsync = useCallback(async () => {
     const result = await fetchData(endpoint, stableParams);
+
     setData((result as AnimeNode[]).map((item) => item.node)); // Extract the node property
   }, [fetchData, endpoint, stableParams]);
 

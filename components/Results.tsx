@@ -4,6 +4,7 @@ import ResultsCard from './ResultsCard';
 import { useAnime } from '@/context/AnimeContext';
 import Link from 'next/link';
 import { AnimeNode } from '@/types';
+import Loading from '@/app/loading';
 
 interface AnimeResults {
   id: number;
@@ -39,7 +40,7 @@ const Results: React.FC<ResultsProps> = ({
     fetchDataAsync();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
 
   return (

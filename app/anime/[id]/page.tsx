@@ -1,17 +1,34 @@
-import { AnimeProvider } from '@/context/AnimeContext';
-import Details from '@/components/Details';
+import { use } from 'react';
+import { Anime } from '@/types';
+import DetailsCard from '@/components/details/DetailsCard';
+import { ANIME_QUERY_PARAMS } from '@/config/animeDetails';
+import DetailsSection from '../../../components/details/DetailsSection';
 
-const AnimeDetailsPage = ({ params }: { params: { id: string } }) => {
-  const detailsParams =
-    'rank,mean,start_date,end_date,synopsis,mean,popularity,num_list_users,num_scoring_users,created_at,updated_at,media_type,status,genres,my_list_status,num_episodes,pictures,start_season';
+async function fetchAnimeData(params: string): Promise<Anime> {
+  const url = new URLSearchParams({ fields: ANIME_QUERY_PARAMS });
+
+  const res = await fetch(`http://localhost:3000/api/${params}?${url}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
+interface DetailsPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const DetailsPage: React.FC<DetailsPageProps> = ({ params }) => {
+  const data = use(fetchAnimeData(params.id));
 
   return (
-    <AnimeProvider>
-      <section className='container mx-auto px-6'>
-        <Details endpoint={params.id} params={{ fields: detailsParams }} />
-      </section>
-    </AnimeProvider>
+    <section className='flex container mx-auto'>
+      <DetailsCard data={data} />
+      <DetailsSection data={data} />
+    </section>
   );
 };
 
-export default AnimeDetailsPage;
+export default DetailsPage;

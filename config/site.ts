@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: 'shadcn/ui',
+  name: 'Next Anime',
   url: '/',
   ogImage: '/',
   description:

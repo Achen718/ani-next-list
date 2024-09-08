@@ -20,9 +20,11 @@ export interface Anime {
   };
   rank: number;
   mean: number;
+  background: string;
   popularity: number;
   media_type: string;
   num_list_users: number;
+  start_date: string;
   end_date: string;
   synopsis: string;
   genres: { id: number; name: string }[];

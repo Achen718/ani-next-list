@@ -1,4 +1,3 @@
-import { Anime } from '@/types';
 import {
   Card,
   CardContent,
@@ -10,11 +9,24 @@ import Image from 'next/image';
 import Loading from '@/app/loading';
 import { Separator } from '../ui/separator';
 
-interface DetailsProps {
-  data: Anime;
+interface DetailsCardProps {
+  data: {
+    title: string;
+    main_picture: { medium: string };
+    rank: number;
+    media_type: string;
+    num_episodes: number;
+    status: string;
+    start_date: string;
+    start_season: { season: string; year: number };
+    mean: number;
+    num_scoring_users: number;
+    genres: { name: string }[];
+    popularity: number;
+  };
 }
 
-const DetailsCard: React.FC<DetailsProps> = ({ data }) => {
+const DetailsCard: React.FC<DetailsCardProps> = ({ data }) => {
   if (!data) return <p>No data available</p>;
 
   return (

@@ -1,20 +1,15 @@
-import { Anime } from '@/types';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from '../ui/card';
-import Image from 'next/image';
-import Loading from '@/app/loading';
+import { Card, CardContent, CardHeader, CardDescription } from '../ui/card';
 import { Separator } from '../ui/separator';
 
-interface DetailsProps {
-  data: Anime;
+interface DetailsSectionProps {
+  data: {
+    synopsis: string;
+    background: string;
+    // add more properties as needed
+  };
 }
 
-const DetailsCard: React.FC<DetailsProps> = ({ data }) => {
+const DetailsSection: React.FC<DetailsSectionProps> = ({ data }) => {
   if (!data) return <p>No data available</p>;
 
   return (
@@ -39,4 +34,4 @@ const DetailsCard: React.FC<DetailsProps> = ({ data }) => {
   );
 };
 
-export default DetailsCard;
+export default DetailsSection;

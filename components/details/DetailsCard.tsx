@@ -48,24 +48,20 @@ const DetailsCard: React.FC<DetailsCardProps> = ({ data }) => {
           )}
 
           <Separator className='my-4' />
-          <CardDescription>
-            <div className='text-lg'>Information</div>
-            <div>Rank: {data.rank}</div>
-            <div>Type: {data.media_type}</div>
-            <div>Episodes: {data.num_episodes} </div>
-            <div>Status: {data.status}</div>
-            <div>Start Date: {data.start_date}</div>
-            <div>
-              Premier Date: {data.start_season.season} {data.start_season.year}
-            </div>
-            <div>
-              Score: {data.mean} (scored by {data.num_scoring_users} users)
-            </div>
-            <div>
-              Genre: {data.genres.map((genre) => genre.name).join(', ')}
-            </div>
-            <div>Popularity: #{data.popularity}</div>
-          </CardDescription>
+          <div className='text-lg'>Information</div>
+          <div>Rank: {data.rank}</div>
+          <div>Type: {data.media_type}</div>
+          <div>Episodes: {data.num_episodes} </div>
+          <div>Status: {data.status}</div>
+          <div>Start Date: {data.start_date}</div>
+          <div>
+            {/* Premier Date: {data.start_season.season} {data.start_season.year} */}
+          </div>
+          <div>
+            Score: {data.mean} (scored by {data.num_scoring_users} users)
+          </div>
+          <div>Genre: {data.genres.map((genre) => genre.name).join(', ')}</div>
+          <div>Popularity: #{data.popularity}</div>
         </CardContent>
       </Card>
     </div>

@@ -14,7 +14,6 @@ const fetchData = async (endpoint: string, params: Record<string, string>) => {
   }
 
   const result = await res.json();
-  console.log(result);
   return (result.data as AnimeNode[]).map((item) => item.node);
 };
 

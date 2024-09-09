@@ -16,17 +16,15 @@ const DetailsSection: React.FC<DetailsSectionProps> = ({ data }) => {
     <div className='description-card'>
       <Card className='relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg'>
         <CardHeader className='relative overflow-hidden rounded-md'>
-          <CardDescription>
-            <div className='text-lg'>Synopsis</div>
-            <Separator className='my-4' />
-            <div>{data.synopsis}</div>
-          </CardDescription>
+          <CardDescription className='text-lg'>Synopsis</CardDescription>
+          <Separator className='my-4' />
+          <CardDescription>{data.synopsis}</CardDescription>
         </CardHeader>
         <CardContent>
-          <CardDescription>
-            <div className='text-lg'>Background</div>
-            <Separator className='my-4' />
-            <div>{data.background}</div>
+          <CardDescription className='text-lg'>Background</CardDescription>
+          <Separator className='my-4' />
+          <CardDescription className='text-lg'>
+            {data.background}
           </CardDescription>
         </CardContent>
       </Card>

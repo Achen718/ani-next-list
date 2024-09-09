@@ -24,7 +24,7 @@ export const docsConfig: DocsConfig = {
   mainNav: [
     {
       title: 'Search',
-      href: '/',
+      href: '/search/',
       description:
         'A modal dialog that interrupts the user with important content and expects a response.',
     },
@@ -47,17 +47,17 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: 'Search',
-          href: '/anime',
+          href: '/search/',
           items: [],
         },
         {
           title: 'Top',
-          href: '/anime/top',
+          href: '/search/anime',
           items: [],
         },
         {
           title: 'Seasonal',
-          href: '/anime/season',
+          href: '/search/anime',
           items: [],
         },
       ],

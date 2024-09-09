@@ -1,20 +1,16 @@
-export interface AnimeNode {
-  node: {
-    id: number;
-    title: string;
-    main_picture: {
-      medium: string;
-    };
-  };
-}
-
-export interface Anime {
+// results/cards
+export interface AnimeNodeDetails {
   id: number;
   title: string;
   main_picture: {
     medium: string;
-    large: string;
   };
+}
+export interface AnimeNode {
+  node: AnimeNodeDetails;
+}
+// Details page
+export interface Anime extends AnimeNodeDetails {
   ranking: {
     rank: number;
   };

@@ -40,13 +40,13 @@ export function NavBar() {
                     </Link>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href='/anime' title='Anime Search'>
+                <ListItem href='/search/anime' title='Anime Search'>
                   Re-usable components built using Radix UI and Tailwind CSS.
                 </ListItem>
-                <ListItem href='/anime' title='Top # Anime'>
+                <ListItem href='/search/anime/top' title='Top # Anime'>
                   How to install dependencies and structure your app.
                 </ListItem>
-                <ListItem href='/anime/season' title='Seasonal Anime'>
+                <ListItem href='/search/anime/season' title='Seasonal Anime'>
                   Styles for headings, paragraphs, lists...etc
                 </ListItem>
               </ul>

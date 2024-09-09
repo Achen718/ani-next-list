@@ -1,15 +1,12 @@
 import Hero from '@/components/Hero';
-import ResultsSection from '@/components/ResultsSection';
-import { AnimeProvider } from '@/context/AnimeContext';
+import HomeResults from '@/components/HomeResults';
 
 const Home = () => {
   return (
-    <AnimeProvider>
-      <section className='container mx-auto px-6'>
-        <Hero />
-        <ResultsSection />
-      </section>
-    </AnimeProvider>
+    <section className='container mx-auto px-6'>
+      <Hero />
+      <HomeResults />
+    </section>
   );
 };
 

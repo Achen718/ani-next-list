@@ -1,18 +1,7 @@
 import { use } from 'react';
-import { Anime } from '@/types';
 import DetailsCard from '@/components/details/DetailsCard';
-import { ANIME_QUERY_PARAMS } from '@/config/animeDetails';
 import DetailsSection from '@/components/details/DetailsSection';
-
-async function fetchAnimeData(id: string): Promise<Anime> {
-  const url = new URLSearchParams({ fields: ANIME_QUERY_PARAMS });
-  // get path
-  const res = await fetch(`${process.env.MAL_API_URL}/anime/${id}?${url}`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-}
+import { fetchAnimeDetail } from '@/utils/fetchUtils';
 
 interface DetailsPageProps {
   params: {
@@ -21,7 +10,7 @@ interface DetailsPageProps {
 }
 
 const DetailsPage: React.FC<DetailsPageProps> = ({ params }) => {
-  const data = use(fetchAnimeData(params.id));
+  const data = use(fetchAnimeDetail(params.id));
 
   const detailsCardData = {
     title: data.title,

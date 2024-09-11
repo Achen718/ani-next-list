@@ -1,4 +1,7 @@
+import { fetchData } from '@/utils/fetchUtils';
+
 const Search = () => {
+  // Top 100, seasonal or create subfolders in /anime
   return (
     <div>
       test

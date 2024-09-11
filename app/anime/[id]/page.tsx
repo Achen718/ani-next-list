@@ -6,8 +6,8 @@ import DetailsSection from '@/components/details/DetailsSection';
 
 async function fetchAnimeData(id: string): Promise<Anime> {
   const url = new URLSearchParams({ fields: ANIME_QUERY_PARAMS });
-
-  const res = await fetch(`http://localhost:3000/api/${id}?${url}`);
+  // get path
+  const res = await fetch(`${process.env.MAL_API_URL}/anime/${id}?${url}`);
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }

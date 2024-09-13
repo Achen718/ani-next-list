@@ -5,21 +5,17 @@ export const homeSections = [
   {
     sectionTitle: 'Upcoming Anime',
     ranking_type: 'upcoming',
-    endpoint: 'ranking',
   },
   {
     sectionTitle: 'Popular this season',
     ranking_type: 'airing',
-    endpoint: 'ranking',
   },
   {
     sectionTitle: 'Top Scoring Anime',
     ranking_type: 'all',
-    endpoint: 'ranking',
   },
   {
     sectionTitle: 'All Time Popular',
     ranking_type: 'bypopularity',
-    endpoint: 'ranking',
   },
 ];

@@ -10,7 +10,7 @@ export const fetchData = async (
   endpoint: string,
   params: Record<string, string>
 ) => {
-  const url = new URL(`${process.env.MAL_API_URL}/anime/${endpoint}`);
+  const url = new URL(`${process.env.MAL_API_URL}/${endpoint}`);
   Object.keys(params).forEach((key) =>
     url.searchParams.append(key, params[key])
   );
@@ -27,7 +27,7 @@ export const fetchData = async (
   return (result.data as AnimeNode[]).map(({ node }) => node);
 };
 
-export async function fetchAnimeDetail(id: string): Promise<Anime> {
+export const fetchAnimeDetail = async (id: string): Promise<Anime> => {
   const url = new URLSearchParams({ fields: ANIME_QUERY_PARAMS });
   const res = await fetch(`${process.env.MAL_API_URL}/anime/${id}?${url}`, {
     headers,
@@ -36,4 +36,4 @@ export async function fetchAnimeDetail(id: string): Promise<Anime> {
     throw new Error('Failed to fetch data');
   }
   return res.json();
-}
+};

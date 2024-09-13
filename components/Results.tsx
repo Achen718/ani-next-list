@@ -3,7 +3,7 @@ import ResultsCard from './ResultsCard';
 import { AnimeNodeDetails } from '@/types';
 
 interface ResultsProps {
-  sectionTitle: string;
+  sectionTitle?: string;
   data: AnimeNodeDetails[];
 }
 

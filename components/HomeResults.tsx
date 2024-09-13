@@ -7,7 +7,7 @@ const HomeResults = async () => {
 
   const homeSectionsData = await Promise.all(
     homeSections.map(async (section) => {
-      const data = await fetchData(section.endpoint, {
+      const data = await fetchData('anime/ranking', {
         ranking_type: section.ranking_type,
         limit,
       });

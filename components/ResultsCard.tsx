@@ -12,6 +12,7 @@ export interface CardProps {
 const ResultsCard: React.FC<CardProps> = ({ image, title, id, rank }) => {
   return (
     <div className='anime-card md:w-48'>
+      {rank && <div className='rank'>Rank: #{rank}</div>}
       <Link href={`/anime/${id}`}>
         <Image
           loading='lazy'
@@ -20,7 +21,7 @@ const ResultsCard: React.FC<CardProps> = ({ image, title, id, rank }) => {
           height={200}
           alt={title}
         />
-        <p>{title}</p>
+        <div>{title}</div>
       </Link>
     </div>
   );

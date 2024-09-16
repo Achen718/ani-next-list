@@ -5,9 +5,13 @@ export interface AnimeNodeDetails {
   main_picture: {
     medium: string;
   };
+  rank?: number;
 }
 export interface AnimeNode {
   node: AnimeNodeDetails;
+  ranking?: {
+    rank: number;
+  };
 }
 // Details page
 export interface Anime extends AnimeNodeDetails {

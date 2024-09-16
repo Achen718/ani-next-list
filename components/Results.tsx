@@ -20,6 +20,7 @@ const Results: React.FC<ResultsProps> = ({ sectionTitle, data }) => {
             image={anime.main_picture.medium}
             title={anime.title}
             id={anime.id}
+            rank={anime.rank}
           />
         ))}
       </div>

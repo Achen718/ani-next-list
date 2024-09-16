@@ -6,6 +6,7 @@ const headers = {
   'X-MAL-CLIENT-ID': process.env.MAL_CLIENT_ID || '',
 };
 
+// fetch ranking/season
 export const fetchData = async (
   endpoint: string,
   params: Record<string, string>
@@ -24,9 +25,14 @@ export const fetchData = async (
   }
 
   const result = await res.json();
-  return (result.data as AnimeNode[]).map(({ node }) => node);
+
+  return (result.data as AnimeNode[]).map(({ node, ranking }) => ({
+    ...node,
+    ...ranking,
+  }));
 };
 
+// anime_id
 export const fetchAnimeDetail = async (id: string): Promise<Anime> => {
   const url = new URLSearchParams({ fields: ANIME_QUERY_PARAMS });
   const res = await fetch(`${process.env.MAL_API_URL}/anime/${id}?${url}`, {

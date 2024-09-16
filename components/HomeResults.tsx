@@ -11,9 +11,11 @@ const HomeResults = async () => {
         ranking_type: section.ranking_type,
         limit,
       });
+
+      const removeRank = data.map(({ rank, ...rest }) => rest);
       return {
         sectionTitle: section.sectionTitle,
-        data,
+        data: removeRank,
       };
     })
   );

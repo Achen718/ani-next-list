@@ -1,4 +1,4 @@
-import { AnimeNode, Anime } from '@/types';
+import { Anime } from '@/types';
 import { ANIME_QUERY_PARAMS } from '@/config/animeDetails';
 
 const headers = {
@@ -25,11 +25,7 @@ export const fetchData = async (
   }
 
   const result = await res.json();
-
-  return (result.data as AnimeNode[]).map(({ node, ranking }) => ({
-    ...node,
-    ...ranking,
-  }));
+  return result;
 };
 
 // anime_id

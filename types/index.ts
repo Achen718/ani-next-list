@@ -1,9 +1,11 @@
 // results/cards
 export interface AnimeNodeDetails {
-  id: number;
-  title: string;
-  main_picture: {
-    medium: string;
+  node: {
+    id: number;
+    title: string;
+    main_picture: {
+      medium: string;
+    };
   };
   rank?: number;
 }
@@ -14,7 +16,12 @@ export interface AnimeNode {
   };
 }
 // Details page
-export interface Anime extends AnimeNodeDetails {
+export interface Anime {
+  id: number;
+  title: string;
+  main_picture: {
+    medium: string;
+  };
   ranking: {
     rank: number;
   };

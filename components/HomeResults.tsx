@@ -12,22 +12,17 @@ const HomeResults = async () => {
         limit,
       });
 
-      const removeRank = data.map(({ rank, ...rest }) => rest);
       return {
         sectionTitle: section.sectionTitle,
-        data: removeRank,
+        ...data,
       };
     })
   );
 
   return (
     <div className='home-results'>
-      {homeSectionsData.map((section, index) => (
-        <Results
-          key={index}
-          sectionTitle={section.sectionTitle}
-          data={section.data}
-        />
+      {homeSectionsData.map(({ data }, index) => (
+        <Results key={index} sectionTitle={data.sectionTitle} data={data} />
       ))}
     </div>
   );

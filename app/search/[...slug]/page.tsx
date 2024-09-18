@@ -15,7 +15,10 @@ const Search = async ({ params }: animeSearch) => {
 
   const endpoint = path.join('/');
   // Todo: add seasonal endpoint
-  const data = await fetchData(endpoint, { ranking_type: 'all', limit: '24' });
+  const { data } = await fetchData(endpoint, {
+    ranking_type: 'all',
+    limit: '24',
+  });
 
   return (
     <div>

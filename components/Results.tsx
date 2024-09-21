@@ -1,6 +1,6 @@
 import React from 'react';
 import ResultsCard from './ResultsCard';
-import { AnimeNodeDetails } from '@/types';
+import { AnimeNodeDetails } from '@/types/animeConstants';
 
 interface ResultsProps {
   sectionTitle?: string;
@@ -8,7 +8,6 @@ interface ResultsProps {
 }
 
 const Results: React.FC<ResultsProps> = ({ sectionTitle, data }) => {
-  console.log(data);
   return (
     <div className='mb-4'>
       <div className='flex justify-between'>

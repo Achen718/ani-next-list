@@ -21,8 +21,12 @@ const HomeResults = async () => {
 
   return (
     <div className='home-results'>
-      {homeSectionsData.map(({ data }, index) => (
-        <Results key={index} sectionTitle={data.sectionTitle} data={data} />
+      {homeSectionsData.map((data, index) => (
+        <Results
+          key={index}
+          sectionTitle={data.sectionTitle}
+          data={data.data}
+        />
       ))}
     </div>
   );

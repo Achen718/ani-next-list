@@ -1,4 +1,3 @@
-// results/cards
 export interface AnimeNodeDetails {
   node: {
     id: number;
@@ -15,7 +14,7 @@ export interface AnimeNode {
     rank: number;
   };
 }
-// Details page
+// Details page - break down the data into two sections
 export interface Anime {
   id: number;
   title: string;

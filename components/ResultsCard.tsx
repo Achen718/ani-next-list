@@ -1,13 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-export interface CardProps {
-  image: string;
-  title: string;
-  id: number;
-  rank?: number;
-}
+import { CardProps } from '@/types/cardConstants';
 
 const ResultsCard: React.FC<CardProps> = ({ image, title, id, rank }) => {
   return (

@@ -1,4 +1,4 @@
-import { Anime } from '@/types';
+import { Anime } from '@/types/animeConstants';
 import { ANIME_QUERY_PARAMS } from '@/config/animeDetails';
 
 const headers = {

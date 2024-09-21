@@ -23,6 +23,7 @@ const Search = async ({ params }: animeSearch) => {
   return (
     <div>
       {/* search bar */}
+      {/* rank component */}
       <Results data={data} />
       {/* pagination */}
     </div>

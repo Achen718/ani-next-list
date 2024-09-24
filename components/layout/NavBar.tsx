@@ -13,8 +13,10 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { docsConfig } from '@/config/nav';
+import { getCurrentSeason } from '@/utils/getCurrentSeason';
 // Todo: Add logo/auth
 export function NavBar() {
+  const { season, year } = getCurrentSeason();
   return (
     <header className='z-50 sticky top-0 flex h-16 justify-start md:justify-center items-center gap-4 border-b bg-background px-4 md:px-6'>
       <NavigationMenu className='hidden md:flex'>
@@ -46,8 +48,11 @@ export function NavBar() {
                 <ListItem href='/search/anime/top' title='Top # Anime'>
                   How to install dependencies and structure your app.
                 </ListItem>
-                <ListItem href='/search/anime/season' title='Seasonal Anime'>
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem
+                  href={`/search/anime/season/${year}/${season}`}
+                  title='Seasonal Anime'
+                >
+                  Current anime for {season} {year}.
                 </ListItem>
               </ul>
             </NavigationMenuContent>

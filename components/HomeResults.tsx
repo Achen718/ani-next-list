@@ -4,10 +4,10 @@ import { fetchData } from '@/utils/fetchUtils';
 
 const HomeResults = async () => {
   const limit = '6';
-
+  // move data fetching to home
   const homeSectionsData = await Promise.all(
     homeSections.map(async (section) => {
-      const data = await fetchData('anime/ranking', {
+      const data = await fetchData('ranking', {
         ranking_type: section.ranking_type,
         limit,
       });

@@ -1,5 +1,6 @@
 import { fetchData } from '@/utils/fetchUtils';
 import Results from '@/components/Results';
+import SearchSection from '@/components/Search/SearchSection';
 
 interface animeSearch {
   params: {
@@ -9,8 +10,9 @@ interface animeSearch {
 
 const Search = async ({ params }: animeSearch) => {
   const path = params.slug;
-  if (path[1] === 'top') {
-    path[1] = 'ranking';
+
+  if (path[0] === 'top') {
+    path[0] = 'ranking';
   }
 
   const endpoint = path.join('/');
@@ -20,10 +22,12 @@ const Search = async ({ params }: animeSearch) => {
     limit: '24',
   });
 
+  // anime?q=one&limit=4 -- Params for search
   return (
-    <div>
+    <div className='container mx-auto'>
       {/* search bar */}
       {/* rank component */}
+      {/* hide Home results on search */}
       <Results data={data} />
       {/* pagination */}
     </div>

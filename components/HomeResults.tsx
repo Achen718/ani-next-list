@@ -1,24 +1,14 @@
 import Results from '@/components/Results';
-import { homeSections } from '@/config/animeDetails';
-import { fetchData } from '@/utils/fetchUtils';
 
-const HomeResults = async () => {
-  const limit = '6';
-  // move data fetching to home
-  const homeSectionsData = await Promise.all(
-    homeSections.map(async (section) => {
-      const data = await fetchData('ranking', {
-        ranking_type: section.ranking_type,
-        limit,
-      });
+import { fetchHomeSectionsData } from '@/utils/fetchResultsData';
 
-      return {
-        sectionTitle: section.sectionTitle,
-        ...data,
-      };
-    })
-  );
+interface HomeResultsProps {
+  homeSectionsData: Awaited<ReturnType<typeof fetchHomeSectionsData>>;
+}
 
+const HomeResults: React.FC<HomeResultsProps> = async ({
+  homeSectionsData,
+}) => {
   return (
     <div className='home-results'>
       {homeSectionsData.map((data, index) => (

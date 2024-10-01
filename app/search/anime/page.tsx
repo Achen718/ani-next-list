@@ -1,15 +1,15 @@
+// app/search/anime/page.tsx
 import SearchSection from '@/components/Search/SearchSection';
 import HomeResults from '@/components/HomeResults';
+import { fetchHomeSectionsData } from '@/utils/fetchResultsData';
 
-interface SearchProps {
-  searchParams: Record<string, string>;
-}
-const AnimePage = (searchParams: any) => {
-  //   { params: {}, searchParams: { q: 'one', limit: '4' } }
+const AnimePage = async () => {
+  const homeSectionsData = await fetchHomeSectionsData();
+
   return (
     <div className='container mx-auto'>
       <SearchSection />
-      <HomeResults />
+      <HomeResults homeSectionsData={homeSectionsData} />
     </div>
   );
 };

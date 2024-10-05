@@ -6,11 +6,9 @@ export interface AnimeNodeDetails {
       medium: string;
     };
   };
-  rank?: number;
 }
-export interface AnimeNode {
-  node: AnimeNodeDetails;
-  ranking?: {
+export interface AnimeNode extends AnimeNodeDetails {
+  ranking: {
     rank: number;
   };
 }

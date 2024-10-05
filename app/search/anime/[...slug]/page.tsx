@@ -1,5 +1,5 @@
 import { fetchData } from '@/utils/fetchUtils';
-import Results from '@/components/Results';
+import SearchResults from '@/components/Search/SearchResults';
 import SearchSection from '@/components/Search/SearchSection';
 
 interface animeSearch {
@@ -28,7 +28,7 @@ const Search = async ({ params }: animeSearch) => {
       {/* search bar */}
       {/* rank component */}
       {/* hide Home results on search */}
-      <Results data={data} />
+      <SearchResults data={data} />
       {/* pagination */}
     </div>
   );

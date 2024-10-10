@@ -11,8 +11,9 @@ export const fetchData = async (
   endpoint: string,
   params: Record<string, string>
 ) => {
+  const url = new URL(`${process.env.MAL_API_URL}/anime/${endpoint}`);
+
   try {
-    const url = new URL(`${process.env.MAL_API_URL}/anime/${endpoint}`);
     Object.keys(params).forEach((key) =>
       url.searchParams.append(key, params[key])
     );
@@ -25,8 +26,7 @@ export const fetchData = async (
       throw new Error(`Failed to fetch data: ${res.statusText}`);
     }
 
-    const result = await res.json();
-    return result;
+    return await res.json();
   } catch (error) {
     console.error('Error fetching data:', error);
     throw error;

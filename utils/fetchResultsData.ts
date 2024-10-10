@@ -1,8 +1,7 @@
 import { homeSections } from '@/config/animeDetails';
 import { fetchData } from '@/utils/fetchUtils';
 
-export const fetchHomeSectionsData = async () => {
-  const limit = '6';
+export const fetchHomeSectionsData = async (limit: string) => {
   const homeSectionsData = await Promise.all(
     homeSections.map(async (section) => {
       const data = await fetchData('ranking', {
